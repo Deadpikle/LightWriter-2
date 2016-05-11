@@ -1,0 +1,480 @@
+/* For CSS, you find an element the same way as in jquery.
+	#-name- is the element with ID -name
+	.-name- is the element with CLASS -name
+*/
+body {
+    background-color: #000000;
+    font-size: 14px;
+}
+
+#PageDiv
+{
+    width: 1348px; 
+    height: 748px; 
+    margin:auto;
+}
+
+#ToolsDiv
+{
+    width: 225px; 
+    height: 100%; 
+    float: left; 
+    background-color: #000000;
+}
+
+#ToolsTitle {
+    height: 74px;
+}
+
+#CodeDiv
+{
+    width: 441px; 
+    height: 748px; 
+    float: left;
+    background-color: #000000;
+    padding-left: 4px;
+    padding-right:4px;
+}
+
+#CodeTitle
+{
+    height: 74px;
+}
+
+#ActualCode {
+    border-width: 1px;
+    border-color: #eee;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: white;
+    height: 666px;
+    margin-top: 2px;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding-bottom: 7px;
+    overflow:auto;
+    z-index: 5000;
+}
+
+#RightHalf
+{
+    width: 674px; 
+    height: 748px; 
+    float: left;
+}
+
+#MenuBar
+{
+    width: 674px; 
+    height: 74px; 
+    background-color: #cc0000;
+    text-align: left;
+    border-radius: 6px;
+}
+
+#MenuBanner {
+    float: left;
+    margin-right: 9px;
+}
+
+#MenuButtons {
+    float: left;
+}
+
+#MenuButtons input {
+    margin-top: 6px;
+}
+
+#ActualGrid {
+    width: 620px;
+    padding-top: 20px;
+    padding-left: 13px; 
+}
+
+#LightGrid
+{
+    width: 674px; 
+    height: 654px; 
+    background-color: black;
+}
+
+.color-box {
+    position: relative;
+    margin-right: 3px;
+    margin-left: 3px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-color: #444444;
+	/*background-color: #33ccff;*/
+    border: 1px solid black;
+}
+
+.color-box2 {
+    float: left;
+    height: 30px;
+    width: 30px;
+    margin: 4px;
+    background-color: #444444;
+}
+
+.grid-row {
+    height: 38px;
+    width: 640px;
+}
+
+/*input#addComparisonBlock {
+	margin-bottom: 15px;
+}*/
+
+.hidden {
+	display: none;
+}
+
+#block-list { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    width: 100%; 
+}
+
+#block-list li {  
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+    padding-top: 7px;
+}
+
+.interiorDiv { 
+    height: 40px; 
+    background: #CCC; 
+    font-family: Verdana; 
+    font-size:initial; 
+    color:#000;
+}
+
+.title {
+    background-color: #cc0000;
+    text-align: center;
+    color: #ffffff;
+    font-size: x-large;
+    font-family: Arial,sans-serif;
+
+    /*background: rgb(204,0,0); /* Old browsers */
+    /*background: -moz-linear-gradient(top, rgba(204,0,0,1) 0%, rgba(204,61,61,1) 100%); /* FF3.6+ */
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(204,0,0,1)), color-stop(100%,rgba(204,61,61,1))); /* Chrome,Safari4+ */
+    /*background: -webkit-linear-gradient(top, rgba(204,0,0,1) 0%,rgba(204,61,61,1) 100%); /* Chrome10+,Safari5.1+ */
+    /*background: -o-linear-gradient(top, rgba(204,0,0,1) 0%,rgba(204,61,61,1) 100%); /* Opera 11.10+ */
+    /*background: -ms-linear-gradient(top, rgba(204,0,0,1) 0%,rgba(204,61,61,1) 100%); /* IE10+ */
+    /*background: linear-gradient(to bottom, rgba(204,0,0,1) 0%,rgba(204,61,61,1) 100%); /* W3C */
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc0000', endColorstr='#cc3d3d',GradientType=0 ); /* IE6-9 */
+}
+
+#ToolsTitle {
+    border-radius: 6px;
+}
+
+#CodeTitle {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.TitleTextOffset {
+    padding-top: 0px;
+}
+
+.DraggableBlock {
+    text-align: center;
+    font-size: large;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 20px;
+    line-height: 95%;
+}
+
+.menuButton {
+    background-color: #cc0000;
+    padding: 0;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+        
+    border:1px solid #cc0000;
+}
+.menuButton:hover {
+        
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffe0b5;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffe0b5;
+    box-shadow:inset 0px 1px 0px 0px #ffe0b5;
+        
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #cc0000), color-stop(1, #cc0000));
+    background:-moz-linear-gradient(top, #cc0000 5%, #cc0000 100%);
+    background:-webkit-linear-gradient(top, #cc0000 5%, #cc0000 100%);
+    background:-o-linear-gradient(top, #cc0000 5%, #cc0000 100%);
+    background:-ms-linear-gradient(top, #cc0000 5%, #cc0000 100%);
+    background:linear-gradient(to bottom, #cc0000 5%, #cc0000 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc0000', endColorstr='#cc0000',GradientType=0);
+        
+    background-color:#cc0000;
+        
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+        
+    border:1px solid #a30000;
+}
+.menuButton:active {
+    position:relative;
+    top:1px;
+}
+
+/* The following is CSS for jQuery UI Dialogs */
+div.form-dialog form label, div.form-dialog label {
+	display: block;
+	width: auto;
+}
+div.form-dialog fieldset
+{
+    text-align: center;
+}
+div.form-dialog form input, div.form-dialog input {
+	display: inline;
+}
+div.form-dialog form input.text, div.form-dialog input.text  {
+	margin-top: 5px;
+	margin-bottom: 9px;
+	padding: .4em;
+}
+div.form-dialog form fieldset, div.form-dialog fieldset {
+	padding: 0;
+	border: 0;
+	margin-top: 25px;
+    margin-left: 15px;
+}
+.ui-dialog .ui-dialog-buttonpane {
+	padding: 0;
+}
+.ui-dialog-titlebar button
+{
+    padding-right: 20px;
+}
+h1 {
+	font-size: 1.2em;
+	margin: .6em 0;
+}
+.ui-dialog .ui-state-error {
+	padding: .3em;
+}
+.validateTips {
+	border: 1px solid transparent;
+	margin-bottom:-15px;
+    margin-top: 10px;
+}
+
+.ui-widget-content input
+{
+    border: 1px solid #aaaaaa;
+}
+
+.rowGridLabels {
+    color: white;
+    font-family: 'Segoe UI';
+    font-size: medium;
+    font-weight: bold;
+    text-align: right;
+    float: left;
+    width: 20px;
+    padding-top: 7px;
+    margin-right: 4px;
+}
+
+.colGridLabels {
+    color: white;
+    font-family: 'Segoe UI';
+    font-size: medium;
+    font-weight: bold;
+    float: left;
+    text-align: center;
+    width: 16px;
+    margin-left: 11px;
+    margin-right: 11px;
+}
+
+.colLabelSpacer {
+    width: 617px;
+    float:left;
+}
+
+#colLabelDiv {
+    padding-left: 23px;
+    text-wrap: none;
+}
+
+.codeBlock {
+    border: 1px solid #d8dcdf;
+    /*background: #eeeeee url(themes/css/LightWriterTheme/images/ui-bg_highlight-hard_100_eeeeee_1x100.png) 50% 50% repeat-x;*/
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    color: #444444;
+    border-radius: 6px;
+    padding: 5px;
+    overflow: auto;
+
+    /* IE10 Consumer Preview */ 
+    background-image: -ms-linear-gradient(top, #F9F9F9 0%, #EEEEEE 100%);
+
+    /* Mozilla Firefox */ 
+    background-image: -moz-linear-gradient(top, #F9F9F9 0%, #EEEEEE 100%);
+
+    /* Opera */ 
+    background-image: -o-linear-gradient(top, #F9F9F9 0%, #EEEEEE 100%);
+
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F9F9F9), color-stop(1, #EEEEEE));
+
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-linear-gradient(top, #F9F9F9 0%, #EEEEEE 100%);
+
+    /* W3C Markup, IE10 Release Preview */ 
+    background-image: linear-gradient(to bottom, #F9F9F9 0%, #EEEEEE 100%);
+}
+
+.innerBlock {
+    /*width: 380px;*/
+    width:90%;
+    float: left;
+}
+
+.blockButtons {
+   /* width: 30px; */
+    float: right;
+    line-height: 0px;
+    margin-right: -5px;
+}
+
+.square16 {
+    width: 30px;
+    height: 30px;
+    margin: 4px;
+    background-color: #444;
+    float: left;
+}
+
+.blockButton {
+    /*background-color: #cc0000;*/
+    margin: 4px;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+        
+    border:1px solid rgba(0, 0, 0, 0);
+}
+.blockButton:hover {
+        
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+        
+    /*background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #cc0000), color-stop(1, #cc0000));
+    background:-moz-linear-gradient(top, #cc0000 5%, #cc0000 100%);
+    background:-webkit-linear-gradient(top, #cc0000 5%, #cc0000 100%);
+    background:-o-linear-gradient(top, #cc0000 5%, #cc0000 100%);
+    background:-ms-linear-gradient(top, #cc0000 5%, #cc0000 100%);
+    background:linear-gradient(to bottom, #cc0000 5%, #cc0000 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc0000', endColorstr='#cc0000',GradientType=0);
+        
+    background-color:#cc0000;*/
+        
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+        
+    border:1px solid #cccccc;
+}
+.blockButton:active {
+    position:relative;
+    top:1px;
+}
+
+#PresentationMenu {
+    text-align: center;
+    display: none;
+}
+
+.presentationButton {
+    background-color: #000000;
+    padding: 0;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+        
+    border:1px solid #000000;
+}
+
+.presentationButton:hover {
+    /*#ffe0b5*/
+    -moz-box-shadow:inset 0px 1px 0px 0px #aaaaaa;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #aaaaaa;
+    box-shadow:inset 0px 1px 0px 0px #aaaaaa;
+        
+    /*background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #cc0000), color-stop(1, #cc0000));
+    background:-moz-linear-gradient(top, #cc0000 5%, #cc0000 100%);
+    background:-webkit-linear-gradient(top, #cc0000 5%, #cc0000 100%);
+    background:-o-linear-gradient(top, #cc0000 5%, #cc0000 100%);
+    background:-ms-linear-gradient(top, #cc0000 5%, #cc0000 100%);
+    background:linear-gradient(to bottom, #cc0000 5%, #cc0000 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc0000', endColorstr='#cc0000',GradientType=0);*/
+        
+    background-color:#000000;
+        
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+        
+    border:1px solid #111111;
+}
+.presentationButton:active {
+    position:relative;
+    top:1px;
+}
+
+#algNameToShareAndSave {
+    margin-top:15px;
+}
+
+#share-url
+{
+    width:325px;
+}
+
+.busy-spinner
+{
+    margin-top:5px;
+}
+
+#menu-busy-spinner
+{
+    margin-top: 1.5em;
+    margin-left: 0.5em;
+    vertical-align: top;
+}
+
+#ms-per-tick
+{
+    border: none;
+}
+
+#rules-form label
+{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+#rules-form .bolded
+{
+    font-weight: bold;
+}
+
+.commentTextArea
+{
+    resize: vertical;
+}

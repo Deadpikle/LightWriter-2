@@ -4,6 +4,10 @@ such as loops and conditionals. LightWriter 2's goal is to rewrite LightWriter (
 improve maintainability, code readability, and other nice things.
 
 The website is pretty fun. Give it a try!
+
+### Contributing
+
+Contributions are welcome! Everything needs to be done. Things need to be rewritten. Newer and better technologies can be used. Give it a go and get a pull request up!
  
 ### TODO 
 

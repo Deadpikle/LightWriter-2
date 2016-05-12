@@ -5,6 +5,12 @@ improve maintainability, code readability, and other nice things.
 
 The website is pretty fun. Give it a try!
 
+### Building and Running
+
+You can build using your favorite TypeScript compiler, I suppose. If you're using Visual Studio Code on OS X (steps likely similar on Windows), look [here](http://michaelcrump.net/using-typescript-with-code/).
+
+Run the project using your favorite LAMP stack! Make sure to setup config.php with your MySQL details before you begin.
+
 ### Contributing
 
 Contributions are welcome! Everything needs to be done. Things need to be rewritten. Newer and better technologies can be used. Give it a go and get a pull request up!

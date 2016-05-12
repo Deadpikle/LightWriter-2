@@ -1,0 +1,1 @@
+// http://michaelcrump.net/using-typescript-with-code/

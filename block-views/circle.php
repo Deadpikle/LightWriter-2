@@ -58,8 +58,8 @@
         <label>.</label>
     </div>
     <div class ="blockButtons">
-        <input type="image" class="blockButton preview" src="Content/images/EyeButton.png"/>
+        <input type="image" class="blockButton preview" src="images/EyeButton.png"/>
         <br>
-        <input type="image" onclick="removeBlock(this)" class="blockButton" src="Content/images/TrashButton.png"/>
+        <input type="image" onclick="removeBlock(this)" class="blockButton" src="images/TrashButton.png"/>
     </div>
 </div>

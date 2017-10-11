@@ -12,7 +12,7 @@
                 <label for="confPassword">Confirm Password</label>
                 <input type="password" name="confPassword" id="confPassword" value="" class="text ui-widget-content ui-corner-all" /> &nbsp;&nbsp;
                 <br />
-                <img class="busy-spinner hidden" id="register-busy-spinner" src="Content/images/ajax-loader-big.gif" />
+                <img class="busy-spinner hidden" id="register-busy-spinner" src="images/ajax-loader-big.gif" />
             </fieldset>
         </form>
     </div>

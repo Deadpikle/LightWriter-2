@@ -7,7 +7,7 @@
                 <label for="alg-name">Algorithm Name</label>
                 <input type="text" name="alg-name" id="algorithmName" class="text ui-widget-content ui-corner-all" />
                 <p>Old algorithms of the same name will be overwritten.</p>
-                <img class="busy-spinner hidden" id="save-busy-spinner" src="Content/images/ajax-loader-big.gif" />
+                <img class="busy-spinner hidden" id="save-busy-spinner" src="images/ajax-loader-big.gif" />
             </fieldset>
         <!--/form-->
     </div>

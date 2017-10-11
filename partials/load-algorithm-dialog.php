@@ -7,7 +7,7 @@
                 <option value="-1">Choose an algorithm...</option>
             </select>
             <br />
-            <img class="busy-spinner hidden" id="load-busy-spinner" src="Content/images/ajax-loader-big.gif" />
+            <img class="busy-spinner hidden" id="load-busy-spinner" src="images/ajax-loader-big.gif" />
         </fieldset>
     </form>
 </div>

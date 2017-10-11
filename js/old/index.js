@@ -15,7 +15,7 @@
 
 // Documentation for classes & functions template
 /*****
-*	nameOfFunction(parameter1, parameter2, …, parameterN)
+*	nameOfFunction(parameter1, parameter2, ï¿½, parameterN)
 *   -Function Description
 *   -Function parameters   (optional)
 *   -Function return values (optional)
@@ -253,7 +253,7 @@ function addBlock(type, templateId) {
 	var addedBlockColorPickerId = blockId + "-color-picker";
 	$(addedBlockSelector).find(".setToColor").attr("id", addedBlockColorPickerId);
 	ProColor.prototype.attachButton(addedBlockColorPickerId, { // add in the color picker
-	    imgPath: "Scripts/Plugins/Procolor/img/procolor_win_",
+	    imgPath: "js/old/lib/Procolor/img/procolor_win_",
 	    showInField: true,
 	    color: '#FFFFFF',
 	    mode: "popup",

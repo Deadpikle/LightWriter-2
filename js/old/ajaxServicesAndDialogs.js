@@ -140,7 +140,7 @@ $(function () {
         $("#rules-dialog").dialog("open");
         if (!$("#rules-dialog").find(".setToColor").next().is("a")) // only create color picker for def box color if one doesn't exist
             ProColor.prototype.attachButton("def-square-color", {
-                imgPath: "Scripts/Plugins/Procolor/img/procolor_win_",
+                imgPath: "js/old/lib/Procolor/img/procolor_win_",
                 showInField: true,
                 color: DEFAULT_BOX_COLOR,
             });

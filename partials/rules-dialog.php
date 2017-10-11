@@ -11,7 +11,7 @@
             <input id="ms-per-tick" name="ms-per-tick" class="spinner" value="500" disabled="disabled"/>
             <label class="bolded" for="color-mixing">Mix Colors Instead of Overwriting</label>
             <input type="checkbox" id="color-mixing" name="color-mixing" />
-            <img class="busy-spinner hidden" id="Img1" src="Content/images/ajax-loader-big.gif" />
+            <img class="busy-spinner hidden" id="Img1" src="images/ajax-loader-big.gif" />
         </fieldset>
     </form>
 </div>

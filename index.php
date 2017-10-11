@@ -127,54 +127,9 @@
             </div>
         </div>        
     </div>
-    <div class="form-dialog" id="register-form-dialog" title="Register for/Login to LightWriter"> <!-- also functions as login form -->
-        <div id="register"><p class="validateTips">Fields marked with a * are required. 
-            If registering for the first time, please fill in the "Confirm Password"
-            box as well. The system will automatically log you in upon registration success.</p>
-            <form id="register-form">
-                <fieldset>
-                    <legend></legend>
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" class="text ui-widget-content ui-corner-all" /> *
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" /> *
-                    <label for="confPassword">Confirm Password</label>
-                    <input type="password" name="confPassword" id="confPassword" value="" class="text ui-widget-content ui-corner-all" /> &nbsp;&nbsp;
-                    <br />
-                    <img class="busy-spinner hidden" id="register-busy-spinner" src="Content/images/ajax-loader-big.gif" />
-                </fieldset>
-            </form>
-        </div>
-    </div>
-
-    <div class="form-dialog" id="save-algorithm-dialog" title="Save LightWriter Algorithm"> <!-- also functions as login form -->
-        <div id="saveAlg">
-            <p class="validateTips">All form fields are required.</p>
-            <!--form id="save-algorithm-form"-->
-                <fieldset>
-                    <legend></legend>
-                    <label for="alg-name">Algorithm Name</label>
-                    <input type="text" name="alg-name" id="algorithmName" class="text ui-widget-content ui-corner-all" />
-                    <p>Old algorithms of the same name will be overwritten.</p>
-                    <img class="busy-spinner hidden" id="save-busy-spinner" src="Content/images/ajax-loader-big.gif" />
-                </fieldset>
-            <!--/form-->
-        </div>
-    </div>
-
-    <div class="form-dialog" id="load-algorithm-dialog" title="Load or Delete LightWriter Algorithm"> <!-- also functions as login form -->
-        <p class="validateTips">Choose an algorithm to load or delete.</p>
-        <form id="load-algorithm-form">
-            <fieldset>
-                <legend></legend>
-                <select id="algorithm-selector">
-                    <option value="-1">Choose an algorithm...</option>
-                </select>
-                <br />
-                <img class="busy-spinner hidden" id="load-busy-spinner" src="Content/images/ajax-loader-big.gif" />
-            </fieldset>
-        </form>
-    </div>
+    <?php require_once 'partials/login-register-form.php'; ?>
+    <?php require_once 'partials/save-algorithm-dialog.php'; ?>
+    <?php require_once 'partials/load-algorithm-dialog.php'; ?>
 
     <div class="form-dialog" id="message-dialog" title="LightWriter Message"> <!-- also functions as login form -->
         <p id="message-box">Here be message (replaced on every call of this dialog)</p>
@@ -207,24 +162,8 @@
             <input type="text" name="alg-name" id="share-url" placeholder="Algorithm Name" />
         </div>
     </div>
-
-    <div class="form-dialog" id="rules-dialog" title="Change LightWriter Rules"> <!-- also functions as login form -->
-        <p class="validateTips">Change some of LightWriter's rules.</p>
-        <form id="rules-form">
-            <fieldset>
-                <legend></legend>
-                <label class="bolded" for="def-square-color">Default Square Color</label>
-			    <input id="def-square-color" name="def-square-color" class="setToColor" type="text"/>
-                <label class="bolded" for="ms-per-tick">Number of Milliseconds Per Tick (1000 per second)</label>
-                <label>Warning: Making the number too low may be 
-                    dangerous for those with seizures (flashing colors) or may cause execution to be sluggish on slow computers.</label>
-                <input id="ms-per-tick" name="ms-per-tick" class="spinner" value="500" disabled="disabled"/>
-                <label class="bolded" for="color-mixing">Mix Colors Instead of Overwriting</label>
-                <input type="checkbox" id="color-mixing" name="color-mixing" />
-                <img class="busy-spinner hidden" id="Img1" src="Content/images/ajax-loader-big.gif" />
-            </fieldset>
-        </form>
-    </div>
+    
+    <?php require_once 'partials/rules-dialog.php'; ?>
 
     <div class="hidden templates"> <!-- TODO: Refactor to different files and stuff -->
 		<div class="comparison-block codeBlock" id="comparison-template">

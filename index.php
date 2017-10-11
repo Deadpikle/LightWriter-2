@@ -5,7 +5,7 @@
 // <_<
 // ...yay for messy beginning projects!
 
-    session_start();    
+    require_once 'init.php';
 ?>
 
 <html>

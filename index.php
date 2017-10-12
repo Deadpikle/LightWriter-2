@@ -137,7 +137,7 @@
     <?php require_once 'partials/share-algorithm-dialog.php'; ?>
     <?php require_once 'partials/rules-dialog.php'; ?>
 
-    <div class="hidden templates"> <!-- TODO: Refactor to different files and stuff -->
+    <div class="hidden templates">
 		<?php require_once 'block-views/single.php'; ?>
 		<?php require_once 'block-views/comparison.php'; ?>
 		<?php require_once 'block-views/range.php'; ?>

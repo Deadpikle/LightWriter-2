@@ -46,7 +46,7 @@ $(function () {
     *	Logs the user out of the system.
     ******/
     function logout() {
-        ajaxService("LogoutUser", {},
+        ajaxService("logout.php", {},
             function (result) {
                 if (result.d == "Success") { // server was able to log the user out
                     LoginLogoutHandler("logout");
@@ -65,7 +65,7 @@ $(function () {
     $("input.saveAlgorithmButton").on("click", function (event) {
         if (isAlgRunning)
             stopAlgorithm();
-        ajaxService("CheckUserSession", {},
+        ajaxService("check-user-session.php", {},
             function (result) {
                 if (result.d == "Active")
                     $("#save-algorithm-dialog").dialog("open");
@@ -85,7 +85,7 @@ $(function () {
     $("input.loadAlgorithmButton").on("click", function (event) {
         if (isAlgRunning)
             stopAlgorithm();
-        ajaxService("CheckUserSession", {},
+        ajaxService("check-user-session.php", {},
             function (result) {
                 if (result.d == "Active") {
                     ajaxService("LoadUserAlgorithmNames", {},
@@ -109,7 +109,7 @@ $(function () {
     $("input#shareButton").on("click", function (event) {
         if (isAlgRunning)
             stopAlgorithm();
-        ajaxService("CheckUserSession", {},
+        ajaxService("check-user-session.php", {},
             function (result) {
                 if (result.d == "Active") {
                     ajaxService("LoadUserAlgorithmNames", {},
@@ -207,9 +207,9 @@ $(function () {
                             password: password
                         };
                         var dialog = this;
-                        ajaxService("LoginUser", serviceParams,
+                        ajaxService("login.php", serviceParams,
                             function (result) {
-                                if (result.d == "Success") { // server was able to login the user
+                                if (result.loginSuccess == true) { // server was able to login the user
                                     $(dialog).dialog("close");
                                     userLoginSuccess(username);
                                 }
@@ -576,7 +576,7 @@ $(function () {
 
     // [debug function] Checks to see if a user is logged in
     function checkUserSession() {
-        ajaxService("CheckUserSession", {},
+        ajaxService("check-user-session.php", {},
             function (result) {
                 showLightWriterMessage(result.d);
             }, null);
@@ -966,7 +966,7 @@ $(function () {
         }
         $.ajax({
             type: "POST",
-            url: "AjaxServices.asmx/" + serviceName,
+            url: "ajax/" + serviceName,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(serviceParameters),
             dataType: "json",

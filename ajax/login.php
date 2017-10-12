@@ -27,12 +27,12 @@
             $_SESSION['UserID'] = $row['UserID'];
             $_SESSION['Username'] = $row['Username'];
             
-            $result = array ( "status" => 200, "loginSuccess" => TRUE);
+            $result = array ( "status" => 200, "success" => TRUE);
             echo json_encode($result);
         }
     }
     if (!$didOutput) {  
-        $result = array ("status" => 200, "loginSuccess" => FALSE);
+        $result = array ("status" => 200, "success" => FALSE);
         echo json_encode($result);
     }
 ?>

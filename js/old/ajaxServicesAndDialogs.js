@@ -48,7 +48,7 @@ $(function () {
     function logout() {
         ajaxService("logout.php", {},
             function (result) {
-                if (result.d == "Success") { // server was able to log the user out
+                if (result.status == 200 && result.success == true) { // server was able to log the user out
                     LoginLogoutHandler("logout");
                     showLightWriterMessage("Successfully logged out.");
                 }
@@ -184,9 +184,10 @@ $(function () {
                             password: password
                         };
                         var dialog = this;
-                        ajaxService("RegisterUser", serviceParams,
+                        ajaxService("register.php", serviceParams,
                             function (result) {
-                                if (result.d == "Success") { // server was able to register him/her; server also logged them in
+                                if (result.status == 200 && result.success == true) { 
+                                    // server was able to register him/her; server also logged them in
                                     userRegistrationAndLoginSuccess(username);
                                     //updateTips("register-form-dialog", "User \"" + username + "\" successfully registered. You may now log in.");
                                     registrationFields.val('');
@@ -209,7 +210,7 @@ $(function () {
                         var dialog = this;
                         ajaxService("login.php", serviceParams,
                             function (result) {
-                                if (result.loginSuccess == true) { // server was able to login the user
+                                if (result.status == 200 && result.success == true) { // server was able to login the user
                                     $(dialog).dialog("close");
                                     userLoginSuccess(username);
                                 }

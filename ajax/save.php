@@ -21,7 +21,7 @@
     try {
         // new graph if graph ID is -1
         if ($patternID == -1) {
-            $insert = "INSERT INTO SavedPatterns (UserID, GraphData, SettingsData, Name) VALUES (?, ?, ?, ?)";
+            $insert = "INSERT INTO SavedPatterns (UserID, PatternData, SettingsData, Name) VALUES (?, ?, ?, ?)";
             $params = [
                 $_SESSION["UserID"],
                 $blocks,
@@ -34,7 +34,7 @@
         }
         else {
             // updating an old graph
-            $update = "UPDATE SavedPatterns SET UserID = ?, GraphData = ?, SettingsData = ?, Name = ? WHERE SavedPatternID = ?";
+            $update = "UPDATE SavedPatterns SET UserID = ?, PatternData = ?, SettingsData = ?, Name = ? WHERE SavedPatternID = ?";
             $params = [
                 $_SESSION["UserID"],
                 $blocks,

@@ -638,10 +638,11 @@ $(function () {
         var serviceParams = {
             patternID: patternID
         };
-        ajaxService("load.php", serviceParams,
+        ajaxService("load-pattern.php", serviceParams,
             function (result) {
                 if (result.status == 200) { // No errors in loading algorithm
-                    loadAlgorithmIntoListAndPage(result.blocks);
+                    currentPatternID = patternID;
+                    loadAlgorithmIntoListAndPage(result);
                     $(dialogSelector).dialog("close");
                 }
                 else {
@@ -690,11 +691,23 @@ $(function () {
     *   and then adjusts the GUI to reflect the internal state
     *   of the block.
     *   Parameters:
-    *       loadedList: The data from the server that contains
+    *       data: The data from the server that contains
     *           all the blocks to insert into the page.
     ******/
-    function loadAlgorithmIntoListAndPage(loadedList) {
+    function loadAlgorithmIntoListAndPage(data) {
+
         blockList.resetListAndIdNums();
+
+        // load pattern (TODO: load that pattern)
+        var pattern = JSON.parse(data.pattern);
+
+        // load settings
+        var settings = JSON.parse(data.settings);
+        COLOR_MIXING = settings.COLOR_MIXING;
+        DEFAULT_BOX_COLOR = settings.DEFAULT_BOX_COLOR;
+        MS_PER_TICK = settings.MS_PER_TICK;
+
+
         if (typeof loadedList.singleBlocks == "undefined") {
             showLightWriterMessage("Something went wrong loading the algorithm. The list object is empty! Please contact an administrator with the " +
                 "circumstances of this error.");

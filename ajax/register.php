@@ -24,7 +24,6 @@
         if (isset($row) && $row !== FALSE) {
             var_dump($row);
             $result = array ("status" => 200, "success" => FALSE, "error" => "Account already exists");
-            echo json_encode($result);
         }
         else {
             // create the user and log them in
@@ -39,11 +38,10 @@
             $_SESSION['UserID'] = $pdo->lastInsertId();
             $_SESSION['Username'] = $username;
             $result = array("status" => 200, "success" => TRUE);
-            echo json_encode($result);
         }
     }
     catch (Exception $e) {
         $result = array ("status" => 400, "success" => FALSE, "error" => "Unknown server error");
-        echo json_encode($result);
     }
+    echo json_encode($result);
 ?>

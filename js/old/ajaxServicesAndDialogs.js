@@ -111,7 +111,7 @@ $(function () {
         ajaxService("check-user-session.php", {},
             function (result) {
                 if (result.status == 200 && result.active == true) {
-                    ajaxService("LoadUserAlgorithmNames", {},
+                    ajaxService("load-pattern-names.php", {},
                         function (result) {
                             loadUserAlgorithmNamesIntoSelector(result, "#alg-selector", "#share-algorithm-dialog", false);
                         }, null);

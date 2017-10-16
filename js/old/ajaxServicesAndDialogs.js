@@ -81,8 +81,9 @@ $(function () {
     *   logged in.
     ******/
     $("input.loadAlgorithmButton").on("click", function (event) {
-        if (isAlgRunning)
+        if (isAlgRunning) {
             stopAlgorithm();
+        }
         ajaxService("check-user-session.php", {},
             function (result) {
                 if (result.status == 200 && result.active == true) {

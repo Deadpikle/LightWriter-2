@@ -223,8 +223,9 @@ $(function () {
 	});
 
     // Other page load stuff
-	if ($(".loginButton").attr("src").indexOf("LogoutButton") !== -1) // src img string has LoginButton in it
-	    LoginLogoutHandler("login"); // set internal state to logged in
+	if (isInitiallyLoggedIn) {
+        LoginLogoutHandler("login"); // set internal state to logged in
+    }
 });
 
 

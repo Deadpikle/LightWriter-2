@@ -6,6 +6,8 @@
 // ...yay for messy beginning projects!
 
     require_once 'init.php';
+
+    $isLoggedIn = isset($_SESSION["UserID"]) ? "true" : "false";
 ?>
 
 <html>
@@ -23,6 +25,9 @@
     <script type="text/javascript" src="js/old/functionsAndClasses.js"></script>
     <script type="text/javascript" src="js/old/index.js"></script>
     <script type="text/javascript" src="js/old/ajaxServicesAndDialogs.js"></script>
+    <script type="text/javascript">
+        var isInitiallyLoggedIn = <?= $isLoggedIn ?>
+    </script>
     
 	<link rel="stylesheet" type="text/css" href="css/theme/jquery-ui-1.10.3.custom.css" />
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -101,8 +106,7 @@
                     <input type="image" onclick=" return EnterPresentationMode()" class="menuButton" src="images/PresentButton.png"/>
                     <input type="image" id="rules-button" class="menuButton" src="images/RulesButton.png"/>
                     <input type="image" onclick=" return requestFullScreen()" class="menuButton" src="images/FullButton.png"/>
-                    <input id="menuLoginButton" type="image" class="menuButton loginButton" 
-                            runat="server" src="images/LoginButton.png"/>
+                    <input id="menuLoginButton" type="image" class="menuButton loginButton" src="images/LoginButton.png"/>
                     <img class="busy-spinner" id="menu-busy-spinner" src="images/ajax-loader-menu.gif" />
 			    </div>
             </div>
@@ -119,8 +123,7 @@
                     <input type="image" id="shareButton" class="presentationButton" src="images/ShareButton.png"/>
                     <input type="image" onclick=" return ExitPresentationMode()" class="presentationButton" src="images/EditorButton.png"/>
                     <input type="image" onclick=" return requestFullScreen()" class="presentationButton" src="images/PresentationFullButton.png"/>
-                    <input id="presentationLoginButton" type="image" class="presentationButton loginButton" 
-                            runat="server" src="images/PresentationLoginButton.png"/>
+                    <input id="presentationLoginButton" type="image" class="presentationButton loginButton" src="images/PresentationLoginButton.png"/>
                     <br />
                     <img class="busy-spinner" id="present-busy-spinner" src="images/ajax-loader-share.gif" />
 			    </div>

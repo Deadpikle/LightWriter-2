@@ -212,7 +212,7 @@ function LoginLogoutHandler(StateIn) {
     LoginLogoutState = StateIn;
     if (LoginLogoutState == "login") {      // If button currently displays "login"
         $("#menuLoginButton").attr("src", 'images/LogoutButton.png'); // Change image in editor
-        $("#presentationLoginButton").attr("src", 'images/PresentationLogoutButton.png'); // Change image in presentaiton view
+        $("#presentationLoginButton").attr("src", 'images/PresentationLogoutButton.png'); // Change image in presentation view
         LoginLogoutState = "logout";        // Update state variable
     }
     else if (LoginLogoutState == "logout") {    // If button currently displays "logout"s

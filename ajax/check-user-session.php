@@ -2,9 +2,10 @@
     require_once '../init.php';
 
     if (isset($_SESSION['UserID'])) {
-        echo 'Active';
+        $result = array ("status" => 200, "active" => TRUE);
     }
     else {
-        echo 'Inactive';
+        $result = array ("status" => 200, "active" => FALSE);
     }
+    echo json_encode($result);
 ?>

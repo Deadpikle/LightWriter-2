@@ -36,7 +36,7 @@
             $insertStmt = $pdo->prepare($insert);
             $insertStmt->execute($params);
             // ok, assuming that succeeded, user is now registered. need their user ID to set up the session
-            //$_SESSION['UserID'] = $pdo->lastInsertId();
+            $_SESSION['UserID'] = $pdo->lastInsertId();
             $_SESSION['Username'] = $username;
             $result = array("status" => 200, "success" => TRUE);
             echo json_encode($result);

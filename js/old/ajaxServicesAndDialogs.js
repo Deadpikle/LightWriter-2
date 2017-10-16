@@ -67,7 +67,7 @@ $(function () {
             stopAlgorithm();
         ajaxService("check-user-session.php", {},
             function (result) {
-                if (result.d == "Active")
+                if (result.status == 200 && result.active == true)
                     $("#save-algorithm-dialog").dialog("open");
                 else {
                     showLightWriterMessage("You must log in first before saving.");
@@ -87,7 +87,7 @@ $(function () {
             stopAlgorithm();
         ajaxService("check-user-session.php", {},
             function (result) {
-                if (result.d == "Active") {
+                if (result.status == 200 && result.active == true) {
                     ajaxService("LoadUserAlgorithmNames", {},
                         function (result) {
                             loadUserAlgorithmNamesIntoSelector(result, "#algorithm-selector", "#load-algorithm-dialog", true);
@@ -111,7 +111,7 @@ $(function () {
             stopAlgorithm();
         ajaxService("check-user-session.php", {},
             function (result) {
-                if (result.d == "Active") {
+                if (result.status == 200 && result.active == true) {
                     ajaxService("LoadUserAlgorithmNames", {},
                         function (result) {
                             loadUserAlgorithmNamesIntoSelector(result, "#alg-selector", "#share-algorithm-dialog", false);
@@ -484,9 +484,9 @@ $(function () {
         setUpBlocksForSaving();
         var rulesForAlgorithm = saveRulesBeforeChange();
         var serviceParams = {
-            blockListJson: JSON.stringify(blockList.blockList),
-            algorithmName: algorithmName,
-            rulesJson: JSON.stringify(rulesForAlgorithm)
+            blocks: JSON.stringify(blockList.blockList),
+            name: algorithmName,
+            rules: JSON.stringify(rulesForAlgorithm)
         };
         ajaxService("SaveUserAlgorithm", serviceParams,
             function (result) {

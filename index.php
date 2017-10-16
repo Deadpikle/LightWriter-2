@@ -111,7 +111,40 @@
 			    </div>
             </div>
             <div id="LightGrid">
-                <div id="ActualGrid"></div>
+                <div id="ActualGrid">
+
+                <?php 
+                    // create column labels
+                    // TODO: finish this -- it works except for the column label stuff 
+                    /*echo "<div id='colLabelDiv'>";
+                    
+                    for ($i = 0; $i < 16; $i++) {
+                        //$content = (string)(intval("A") + $i); // TODO: fix this to get string from ASCII char code
+                        $style = "";
+                        if ($i == 15) {
+                            $style = "style='margin-right:0px'"; // TODO: refactor to CSS
+                        }
+                        echo "<label class='colGridLabels' " . $style . ">" . $i . "</label>";
+                    }
+
+                        echo "<div class='colLabelSpacer'></div>";
+                    echo "</div>";
+
+                    // create grid
+                    for ($i = 0; $i < 16; $i++) {
+                        // overall div for row
+                        echo "<div class='grid-row' id='row" . $i . "'>";
+                        // label for row
+                        echo "<label class='rowGridLabels'>" . $i . "</label>";
+                        // individual grid squares
+                        for ($j = 0; $j < 16; $j++) {
+                            echo "<div id='" . $i . ' ' . $j . "' class='color-box2 " . $i . ' ' . $j . "'></div>";
+                        }
+                        echo "</div>";
+                    }*/
+                ?>
+
+                </div>
             </div>
             <div id="PresentationMenu">
 			    <div id="PresentationButtons">

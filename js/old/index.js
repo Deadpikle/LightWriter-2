@@ -1,7 +1,5 @@
 /*****
 *	index.js
-*	Created on 9/20/2013
-*	Last Modified 11/26/2013
 *	This is the main Javascript file for the
 *	interactions between the user and the underlying
 *	blocks and data structures. 
@@ -15,7 +13,7 @@
 
 // Documentation for classes & functions template
 /*****
-*	nameOfFunction(parameter1, parameter2, �, parameterN)
+*	nameOfFunction(parameter1, parameter2, ..., parameterN)
 *   -Function Description
 *   -Function parameters   (optional)
 *   -Function return values (optional)
@@ -29,7 +27,7 @@ var MAX_ROW = 16; // Last number for the bottom most row. Also used to calc tabl
 var DEFAULT_BOX_COLOR = "#444444";
 var MS_PER_TICK = 500; // number of milliseconds per tick
 var COLOR_MIXING = false; // If true, mixes colors instead of overwriting them
-var SITE_URL_BASE_FOR_SHARING = "http://lightwriter.cs.southern.edu/"; // sharing mechanism appends to this url for sharing
+var SITE_URL_BASE_FOR_SHARING = "https://URL_BASE"; // sharing mechanism appends to this url for sharing
 
 var LOWEST_TICK_SPEED = 50; // lowest possible tick speed for rule setting
 var HIGHEST_TICK_SPEED = 10000; // highest possible tick speed for rule setting
@@ -39,6 +37,7 @@ var blockList = new BlockList(); // List of blocks the user is manipulating/runn
 var grid = new LightGrid(); // Grid that the blocks adjust. The grid paints the GUI.
 var timer; // Timer that executes the executeAlgorithms function on every tick.
 var isAlgRunning = false;
+var currentPatternID = -1; // ID of currently loaded pattern (-1 if doesn't represent a saved pattern in the db)
 
 /*****
 *	outerHTML

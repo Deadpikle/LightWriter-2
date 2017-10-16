@@ -1,6 +1,5 @@
 ﻿/*****
 *	GUI.js
-*	Last Modified 12/16/2013
 *	This javascript file is used to programatically generate the div elements
 *	that make up the light grid and to interface with various GUI elements.
 *	This includes drag and drop functionality, handlers for buttons with toggled 

@@ -2,6 +2,12 @@
 
     require_once '../init.php';
 
+    if (!isset($_SESSION["UserID"])) {
+        $result = array("status" => 401, "success" => FALSE);
+        echo json_encode($result);
+        die();
+    }
+
     $data = getJSONFromPost();
 
     $patternID = -1;

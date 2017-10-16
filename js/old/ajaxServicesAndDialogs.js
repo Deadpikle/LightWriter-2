@@ -1,7 +1,5 @@
 ﻿/*****
 *	ajaxServicesAndDialogs.js
-*	Created on 10/27/2013/
-*	Last Modified 11/29/2013
 *	This javascript file hosts all of the request
 *   and response code for Ajax service calls to the
 *   server. This allows the user to log in/out of 
@@ -88,7 +86,7 @@ $(function () {
         ajaxService("check-user-session.php", {},
             function (result) {
                 if (result.status == 200 && result.active == true) {
-                    ajaxService("LoadUserAlgorithmNames", {},
+                    ajaxService("load-pattern-names.php", {},
                         function (result) {
                             loadUserAlgorithmNamesIntoSelector(result, "#algorithm-selector", "#load-algorithm-dialog", true);
                         }, null);
@@ -281,16 +279,17 @@ $(function () {
                 // See if they selected something
                 var selectedValue = $("#algorithm-selector").val();
                 var optionText = $("#algorithm-selector option[value='" + selectedValue + "']").text();
-                if (selectedValue == -1 || selectedValue == "-1")
-                    updateTips("load-algorithm-dialog", "You can't delete the 'choose an algorithm' option, you goof.");
+                if (selectedValue == -1 || selectedValue == "-1") {
+                    updateTips("load-algorithm-dialog", "You can't delete the 'choose an algorithm' option.");
+                }
                 else {
                     var confirmFunction = function () {
                         var serviceParams = {
-                            id: selectedValue
+                            patternID: selectedValue
                         };
-                        ajaxService("DeleteUserAlgorithm", serviceParams,
+                        ajaxService("delete-pattern.php", serviceParams,
                            function (result) {
-                               if (result.d == "Success") {
+                               if (result.status == 200 && result.success) {
                                    // Remove this algorithm from the selector
                                    updateTips("load-algorithm-dialog", "Algorithm successfully deleted. Please choose another algorithm" +
                                        " to load or delete.");
@@ -486,25 +485,26 @@ $(function () {
         var serviceParams = {
             blocks: JSON.stringify(blockList.blockList),
             name: algorithmName,
-            rules: JSON.stringify(rulesForAlgorithm)
+            rules: JSON.stringify(rulesForAlgorithm),
+            graphID: -1
         };
-        ajaxService("SaveUserAlgorithm", serviceParams,
+        ajaxService("save.php", serviceParams,
             function (result) {
-                var resultDict = result.d;
-                if (typeof resultDict["LoginError"] != "undefined") { // No errors in loading algorithm
-                    updateTips("save-algorithm-dialog", "Error saving an algorithm. Error: " + loadedList["LoginError"]);
+                if (result.status == 401) {
+                    updateTips("save-algorithm-dialog", "You must be logged in before saving.");
                     LoginLogoutHandler("logout");
                 }
-                else if (typeof resultDict["Error"] != "undefined") {
-                    updateTips("save-algorithm-dialog", "Error saving an algorithm. Error: " + loadedList["Error"]);
+                else if (result.status == 500) {
+                    updateTips("save-algorithm-dialog", "Error saving your pattern: " + result.message);
                 }
                 else { // everything is OK
+                    currentPatternID = result.patternID;
                     if (!successFuncCallWithAlgId) // if !successFuncCallWithAlgId, they're in the save-algorithm-dialog (not share one)
                         $("#save-algorithm-dialog").dialog("close");
                     if (shouldAlertSuccess)
-                        showLightWriterMessage("Algorithm saved successfully!");
+                        showLightWriterMessage("Pattern saved successfully!");
                     if (successFuncCallWithAlgId)
-                        successFuncCallWithAlgId(resultDict["AlgID"]);
+                        successFuncCallWithAlgId(result.patternID);
                 }
                 /*
                 if (result.d >= 0) {
@@ -597,16 +597,15 @@ $(function () {
     *           algorithms saved for this user [true/false]
     ******/
     function loadUserAlgorithmNamesIntoSelector(result, nameSelector, dialogSelector, shouldWarnOnNoSaved) {
-        var algorithmNames = result.d;
-        if (shouldWarnOnNoSaved && algorithmNames.length == 0)
+        if (shouldWarnOnNoSaved && result.status == 200 && result.data.length == 0) {
             showLightWriterMessage("No saved algorithms available.");
+        }
         else {
             $(nameSelector).find("option:gt(0)").remove(); // get rid of any old options from previous loadings
-            for (var i = 0; i < algorithmNames.length; i++) {
-                var algParts = algorithmNames[i].split(";;;;");
-                var algId = algParts[0];
-                var algName = algParts[1];
-                var optionString = "<option value='" + algId + "'>" + algName + "</option>";
+            var patternItems = reuslt.data;
+            for (var i = 0; i < patternItems.length; i++) {
+                var item = patternItems[i];
+                var optionString = "<option value='" + item.patternID + "'>" + item.name + "</option>";
                 $(nameSelector).append(optionString);
             }
             // open the load dialog
@@ -625,15 +624,14 @@ $(function () {
     *       algorithmId: the ID of the algorithm to load
     *       dialogSelector: selector of dialog to close on success
     ******/
-    function loadAlgorithm(algorithmId, dialogSelector) {
+    function loadAlgorithm(patternID, dialogSelector) {
         var serviceParams = {
-            algorithmID: algorithmId
+            patternID: patternID
         };
-        ajaxService("LoadUserAlgorithm", serviceParams,
+        ajaxService("load.php", serviceParams,
             function (result) {
-                var loadedList = result.d;
-                if (typeof loadedList["Error"] == "undefined") { // No errors in loading algorithm
-                    loadAlgorithmIntoListAndPage(loadedList);
+                if (result.status == 200) { // No errors in loading algorithm
+                    loadAlgorithmIntoListAndPage(result.blocks);
                     $(dialogSelector).dialog("close");
                 }
                 else {
@@ -926,7 +924,9 @@ $(function () {
                 // Load algorithm, put page into presentation mode after its loaded
                 loadAlgorithmForSharing(algIDToLoad, enterPresentModeAndPlayAlg);
             }
-            else showLightWriterMessage("Invalid sharing ID.");
+            else {
+                showLightWriterMessage("Invalid sharing ID.");
+            }
         }
     }
 

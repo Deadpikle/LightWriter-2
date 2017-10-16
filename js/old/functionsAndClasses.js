@@ -1,7 +1,5 @@
 /*****
 *	functionsAndClasses.js
-*	Created on 9/25/2013
-*	Last Modified 11/26/2013
 *	Holds js "classes" and functions that
 *	those classes utilize. These classes
 *	are called by index.js to be the "backend"

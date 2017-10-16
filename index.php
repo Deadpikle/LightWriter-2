@@ -144,6 +144,7 @@
 		<?php require_once 'block-views/single.php'; ?>
 		<?php require_once 'block-views/comparison.php'; ?>
 		<?php require_once 'block-views/range.php'; ?>
+		<?php require_once 'block-views/circle.php'; ?>
 
         <?php require_once 'block-views/single-move.php'; ?>
         <?php require_once 'block-views/comparison-move.php'; ?>

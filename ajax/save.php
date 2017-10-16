@@ -20,7 +20,7 @@
 
     try {
         // new graph if graph ID is -1
-        if ($graphID == -1) {
+        if ($patternID == -1) {
             $insert = "INSERT INTO SavedPatterns (UserID, GraphData, SettingsData, Name) VALUES (?, ?, ?, ?)";
             $params = [
                 $_SESSION["UserID"],

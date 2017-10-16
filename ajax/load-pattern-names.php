@@ -21,6 +21,8 @@
     $patterns = $stmt->fetchAll();
     $didOutput = FALSE;
 
+    //var_dump($patterns);
+
     if (isset($patterns)) {
         $output = [];
         foreach ($patterns as $pattern) {
@@ -30,6 +32,7 @@
             ];
         }
         $result = array ( "status" => 200, "success" => TRUE, "data" => $output);
+        $didOutput = TRUE;
     }
     if (!$didOutput) {  
         $result = array ("status" => 200, "success" => FALSE);

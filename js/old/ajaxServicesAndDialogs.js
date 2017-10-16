@@ -230,6 +230,7 @@ $(function () {
             restoreOldValidateTipsMsg("register-form-dialog");
         }
     });
+    // TODO: save current in current name, save as new pattern
     $("#save-algorithm-dialog").dialog({ // initialize save dialog and its functions
         autoOpen: false,
         width: 350,
@@ -598,12 +599,20 @@ $(function () {
     *           algorithms saved for this user [true/false]
     ******/
     function loadUserAlgorithmNamesIntoSelector(result, nameSelector, dialogSelector, shouldWarnOnNoSaved) {
-        if (shouldWarnOnNoSaved && result.status == 200 && result.data.length == 0) {
-            showLightWriterMessage("No saved algorithms available.");
+        if (shouldWarnOnNoSaved && result.status == 200 && result.success && result.data.length == 0) {
+            showLightWriterMessage("No saved patterns available.");
         }
-        else {
+        else if (result.status == 401) {
+            showLightWriterMessage("Please login before attempting to load pattern names");
+            LoginLogoutHandler("logout");
+        }
+        else if (!result.success) {
+            showLightWriterMessage("Error loading patterns");
+        }
+        else { 
+            // succeeded
             $(nameSelector).find("option:gt(0)").remove(); // get rid of any old options from previous loadings
-            var patternItems = reuslt.data;
+            var patternItems = result.data;
             for (var i = 0; i < patternItems.length; i++) {
                 var item = patternItems[i];
                 var optionString = "<option value='" + item.patternID + "'>" + item.name + "</option>";

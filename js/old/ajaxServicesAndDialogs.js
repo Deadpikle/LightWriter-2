@@ -750,8 +750,8 @@ $(function () {
                 $(selector).find("select.rightColumnRow").val(block.rightRowOrColumnId);
                 $(selector).find("select.action").val(block.actionString);
             }
-            else if (block.type == blockNamespace.SingleMove.Type || block.type == "SingleMoveBlock") { // TODO: fix the block types (saved one was wrong)
-                var blockId = addBlock("SingleMove", "single-move-template");
+            else if (block.type == blockNamespace.SingleMove.Type) { // TODO: fix the block types (saved one was wrong)
+                var blockId = addBlock(block.type, "single-move-template");
                 var addedBlock = blockList.getBlock(blockId);
                 var selector = '#' + blockId;
                 $(selector).find("input.setToColor").val(block.setToColor); // must make HTML match before setting action so the GUI looks

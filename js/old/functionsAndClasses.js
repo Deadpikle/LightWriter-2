@@ -388,6 +388,7 @@ blockNamespace.Comparison = function ComparisonBlock() {
 	}
 	this.constructObject(); // call the constructor
 }
+blockNamespace.Comparison.Type = "Comparison";
 
 /*****
 *	Range Block
@@ -576,6 +577,7 @@ blockNamespace.Range = function RangeBlock() {
 	}
 	this.constructObject();
 }
+blockNamespace.Range.Type = "Range";
 
 
 /*****
@@ -678,6 +680,7 @@ blockNamespace.SingleBlock = function SingleBlock() {
     }
     this.constructObject();
 }
+blockNamespace.SingleBlock.Type = "SingleBlock";
 
 /*****
 *	CircleBlock class
@@ -783,6 +786,7 @@ blockNamespace.CircleBlock = function CircleBlock() {
     }
     this.constructObject();
 }
+blockNamespace.CircleBlock.Type = "CircleBlock";
 
 //////////// Move blocks start here
 
@@ -797,7 +801,7 @@ blockNamespace.CircleBlock = function CircleBlock() {
 *       [up/down/left/right] [x blocks] every [y] ticks
 ******/
 blockNamespace.SingleMove = function () {
-    this.type = "SingleMoveBlock";
+    this.type = "SingleMove";
     // The following 3 items are initialized to the same state as the HTML (aspx)
     this.direction = "up"; // direction to move on conditional change
     this.numberBlocksToMove = 1; // number of blocks to move on conditional change
@@ -881,6 +885,7 @@ blockNamespace.SingleMove = function () {
     }
     this.constructObject(); // get the "this" variables from the SingleBlock
 }
+blockNamespace.SingleMove.Type = "SingleMove";
 blockNamespace.SingleMove.prototype = new blockNamespace.SingleBlock; // allows for inheritance from previously established blocks
 
 /*****
@@ -894,7 +899,7 @@ blockNamespace.SingleMove.prototype = new blockNamespace.SingleBlock; // allows 
 *           [up/down/left/right] [#] blocks every [#] tick(s).
 ******/
 blockNamespace.ComparisonMove = function () {
-    this.type = "ComparisonMoveBlock";
+    this.type = "ComparisonMove";
     // The following 3 items are initialized to the same state as the HTML (aspx)
     this.direction = "right"; // direction to move on conditional change
     this.numberBlocksToMove = 1; // number of blocks to move on conditional change
@@ -965,6 +970,7 @@ blockNamespace.ComparisonMove = function () {
     }
     this.constructObject(); // get the "this" variables from the Comparison Block
 }
+blockNamespace.ComparisonMove.Type = "ComparisonMove";
 blockNamespace.ComparisonMove.prototype = new blockNamespace.Comparison; // allows for inheritance from previously established blocks
 
 /*****
@@ -978,7 +984,7 @@ blockNamespace.ComparisonMove.prototype = new blockNamespace.Comparison; // allo
 *           [#] rows/columns every [#] tick(s).
 ******/
 blockNamespace.RangeMove = function RangeMoveBlock() {
-    this.type; // type of block; same for every block of this type
+    this.type = "RangeMove"; // type of block; same for every block of this type
 
     this.direction; // direction to move on conditional change
     this.numberBlocksToMove; // number of blocks to move on conditional change
@@ -1091,6 +1097,7 @@ blockNamespace.RangeMove = function RangeMoveBlock() {
     // Yes, this is horribly broken and needs to be revised, but we don't have time for that this semester.
     // TODO.txt has a link with how to do proper JS inheritance.
 }
+blockNamespace.RangeMove.Type = "RangeMove";
 blockNamespace.RangeMove.prototype = new blockNamespace.Range; // allows for inheritance from previously established blocks
 
 ///////// Move blocks end here
@@ -1103,6 +1110,7 @@ blockNamespace.Comment = function CommentBlock() {
     this.needsToReset = false; // Doesn't need to reset after a the timer stops
     this.performAction = function () { } // no action
 }
+blockNamespace.Comment.Type = "Comment";
 
 /*****
 *	isVariableANumber(variable)

@@ -700,6 +700,128 @@ $(function () {
 
         // load pattern (TODO: load that pattern)
         var pattern = JSON.parse(data.pattern);
+        // iterating over object properties: https://stackoverflow.com/a/18202926/3938401
+        Object.keys(pattern).forEach(function(key, index) {
+            // key: the name of the object key
+            // index: the ordinal position of the key within the object 
+            var block = pattern[key];
+            if (block.type == blockNamespace.SingleBlock.Type) {
+                var blockId = addBlock(block.type, "single-template");
+                var addedBlock = blockList.getBlock(blockId);
+                var selector = '#' + blockId;
+                $(selector).find("input.setToColor").val(block.setToColor); // must make HTML match before setting action so the GUI looks
+                // right with the color picker (makes the input box the color of the HTML color string)
+                addedBlock.setAction(block.actionString);
+                addedBlock.rowId = block.rowId;
+                addedBlock.columnId = block.columnId;
+                addedBlock.position = block.position;
+                // Adjust the GUI div to mirror the internal state of the block
+                $(selector).find("select.row").val(block.rowId);
+                $(selector).find("select.column").val(block.columnId);
+                $(selector).find("select.action").val(block.actionString);
+            }
+            else if (block.type == blockNamespace.Comparison.Type) {
+                var blockId = addBlock(block.type, "comparison-template");
+                var addedBlock = blockList.getBlock(blockId);
+                var selector = '#' + blockId;
+                $(selector).find("input.setToColor").val(block.setToColor); // must make HTML match before setting action so the GUI looks
+                // right with the color picker (makes the input box the color of the HTML color string)
+                addedBlock.setAction(block.actionString);
+                addedBlock.rowOrColumnId = block.rowOrColumnId;
+                addedBlock.setComparisonAction(block.comparisonActionString);
+                addedBlock.position = block.position;
+                // Adjust the GUI div to mirror the internal state of the block
+                $(selector).find("select.columnrow").val(block.rowOrColumnID);
+                $(selector).find("select.comparison").val(block.comparisonActionString);
+                $(selector).find("select.action").val(block.actionString);
+            }
+            else if (block.type == blockNamespace.Range.Type) {
+                var blockId = addBlock(block.type, "range-template");
+                var addedBlock = blockList.getBlock(blockId);
+                var selector = '#' + blockId;
+                $(selector).find("input.setToColor").val(block.setToColor); // must make HTML match before setting action so the GUI looks
+                // right with the color picker (makes the input box the color of the HTML color string)
+                addedBlock.setAction(block.actionString);
+                addedBlock.setLeftRowOrColumnId(block.leftRowOrColumnID);
+                addedBlock.setRightRowOrColumnId(block.rightRowOrColumnID);
+                addedBlock.position = block.position;
+                // Adjust the GUI div to mirror the internal state of the block
+                $(selector).find("select.leftColumnRow").val(block.leftRowOrColumnID);
+                $(selector).find("select.rightColumnRow").val(block.rightRowOrColumnID);
+                $(selector).find("select.action").val(block.actionString);
+            }
+            else if (block.type == blockNamespace.SingleMove.Type || block.type == "SingleMoveBlock") { // TODO: fix the block types (saved one was wrong)
+                var blockId = addBlock("SingleMove", "single-move-template");
+                var addedBlock = blockList.getBlock(blockId);
+                var selector = '#' + blockId;
+                $(selector).find("input.setToColor").val(block.setToColor); // must make HTML match before setting action so the GUI looks
+                // right with the color picker (makes the input box the color of the HTML color string)
+                addedBlock.setAction(block.actionString);
+                addedBlock.setRowId(block.rowID);
+                addedBlock.setColumnId(block.columnID);
+                addedBlock.position = block.position;
+                addedBlock.numberTicksBeforeChange = block.numberTicksBeforeChange;
+                addedBlock.numberBlocksToMove = block.numberBlocksToMove;
+                addedBlock.direction = block.direction;
+                // Adjust the GUI div to mirror the internal state of the block
+                $(selector).find("select.row").val(block.rowId);
+                $(selector).find("select.column").val(block.columnId);
+                $(selector).find("select.action").val(block.actionString);
+                $(selector).find("input.setToColor").val(block.setToColor);
+                $(selector).find("select.move-amount").val(block.numberBlocksToMove);
+                $(selector).find("select.tick-amount").val(block.numberTicksBeforeChange);
+                $(selector).find("select.move-direction").val(block.direction);
+            }
+            else if (block.type == blockNamespace.ComparisonMove.Type) {
+                var blockId = addBlock(block.type, 'comparison-move-template');
+                var addedBlock = blockList.getBlock(blockId);
+                var selector = '#' + blockId;
+                $(selector).find("input.setToColor").val(block.setToColor); // must make HTML match before setting action so the GUI looks
+                // right with the color picker (makes the input box the color of the HTML color string)
+                addedBlock.setAction(block.actionString);
+                addedBlock.setComparisonAction(block.comparisonActionString);
+                addedBlock.setRowOrColumnId(block.rowOrColumnID);
+                addedBlock.position = block.position;
+                addedBlock.numberTicksBeforeChange = block.numberTicksBeforeChange;
+                addedBlock.numberBlocksToMove = block.numberBlocksToMove;
+                addedBlock.direction = block.direction;
+                // Adjust the GUI div to mirror the internal state of the block
+                $(selector).find("select.comparison").val(block.comparisonActionString);
+                $(selector).find("select.columnrow").val(block.rowOrColumnID);
+                $(selector).find("select.action").val(block.actionString);
+                $(selector).find("select.move-amount").val(block.numberBlocksToMove);
+                $(selector).find("select.move-direction").val(block.direction);
+                $(selector).find("select.tick-amount").val(block.numberTicksBeforeChange);
+            }
+            else if (block.type == blockNamespace.RangeMove.Type) {
+                var blockId = addBlock(block.type, "range-move-template");
+                var addedBlock = blockList.getBlock(blockId);
+                var selector = '#' + blockId;
+                $(selector).find("input.setToColor").val(block.setToColor); // must make HTML match before setting action so the GUI looks
+                // right with the color picker (makes the input box the color of the HTML color string)
+                addedBlock.setAction(block.actionString);
+                addedBlock.setLeftRowOrColumnId(block.leftRowOrColumnID);
+                addedBlock.setRightRowOrColumnId(block.rightRowOrColumnID);
+                addedBlock.position = block.position;
+                addedBlock.numberTicksBeforeChange = block.numberTicksBeforeChange;
+                addedBlock.numberBlocksToMove = block.numberBlocksToMove;
+                addedBlock.direction = block.direction;
+                // Adjust the GUI div to mirror the internal state of the block
+                $(selector).find("select.leftColumnRow").val(block.leftRowOrColumnID);
+                $(selector).find("select.rightColumnRow").val(block.rightRowOrColumnID);
+                $(selector).find("select.action").val(block.actionString);
+                $(selector).find("select.move-amount").val(block.numberBlocksToMove);
+                $(selector).find("select.move-direction").val(block.direction);
+                $(selector).find("select.tick-amount").val(block.numberTicksBeforeChange);
+            }
+            else if (block.type == blockNamespace.Comment.Type) {
+                var blockId = addBlock(block.type, "comment-template");
+                var addedBlock = blockList.getBlock(blockId);
+                addedBlock.position = block.position;
+                var selector = '#' + blockId;
+                $(selector).find(".commentTextArea").val(block.comment);
+            }
+        });
 
         // load settings
         var settings = JSON.parse(data.settings);
@@ -707,6 +829,7 @@ $(function () {
         DEFAULT_BOX_COLOR = settings.DEFAULT_BOX_COLOR;
         MS_PER_TICK = settings.MS_PER_TICK;
 
+        /*
 
         if (typeof loadedList.singleBlocks == "undefined") {
             showLightWriterMessage("Something went wrong loading the algorithm. The list object is empty! Please contact an administrator with the " +
@@ -786,73 +909,73 @@ $(function () {
         }
         var singleMoveBlocks = loadedList.singleMoveBlocks;
         for (var i = 0; i < singleMoveBlocks.length; i++) {
-            var singleMoveBlock = singleMoveBlocks[i];
+            var block = singleMoveBlocks[i];
             var blockId = addBlock("SingleMove", "single-move-template");
             var addedBlock = blockList.getBlock(blockId);
             var selector = '#' + blockId;
-            $(selector).find("input.setToColor").val(singleMoveBlock.SetToColor); // must make HTML match before setting action so the GUI looks
+            $(selector).find("input.setToColor").val(block.SetToColor); // must make HTML match before setting action so the GUI looks
             // right with the color picker (makes the input box the color of the HTML color string)
-            addedBlock.setAction(singleMoveBlock.ActionString);
-            addedBlock.setRowId(singleMoveBlock.RowID);
-            addedBlock.setColumnId(singleMoveBlock.ColumnID);
-            addedBlock.position = singleMoveBlock.Position;
-            addedBlock.numberTicksBeforeChange = singleMoveBlock.NumberTicksBeforeChange;
-            addedBlock.numberBlocksToMove = singleMoveBlock.NumberBlocksToMove;
-            addedBlock.direction = singleMoveBlock.Direction;
+            addedBlock.setAction(block.ActionString);
+            addedBlock.setRowId(block.RowID);
+            addedBlock.setColumnId(block.ColumnID);
+            addedBlock.position = block.Position;
+            addedBlock.numberTicksBeforeChange = block.NumberTicksBeforeChange;
+            addedBlock.numberBlocksToMove = block.NumberBlocksToMove;
+            addedBlock.direction = block.Direction;
             // Adjust the GUI div to mirror the internal state of the block
             $(selector).find("select.row").val(addedBlock.rowId);
             $(selector).find("select.column").val(addedBlock.columnId);
-            $(selector).find("select.action").val(singleMoveBlock.ActionString);
-            $(selector).find("input.setToColor").val(singleMoveBlock.SetToColor);
-            $(selector).find("select.move-amount").val(singleMoveBlock.NumberBlocksToMove);
-            $(selector).find("select.tick-amount").val(singleMoveBlock.NumberTicksBeforeChange);
-            $(selector).find("select.move-direction").val(singleMoveBlock.Direction);
+            $(selector).find("select.action").val(block.ActionString);
+            $(selector).find("input.setToColor").val(block.SetToColor);
+            $(selector).find("select.move-amount").val(block.NumberBlocksToMove);
+            $(selector).find("select.tick-amount").val(block.NumberTicksBeforeChange);
+            $(selector).find("select.move-direction").val(block.Direction);
         }
         var comparisonMoveBlocks = loadedList.comparisonMoveBlocks;
         for (var i = 0; i < comparisonMoveBlocks.length; i++) {
-            var comparisonMoveBlock = comparisonMoveBlocks[i];
+            var block = comparisonMoveBlocks[i];
             var blockId = addBlock('ComparisonMove', 'comparison-move-template');
             var addedBlock = blockList.getBlock(blockId);
             var selector = '#' + blockId;
-            $(selector).find("input.setToColor").val(comparisonMoveBlock.SetToColor); // must make HTML match before setting action so the GUI looks
+            $(selector).find("input.setToColor").val(block.SetToColor); // must make HTML match before setting action so the GUI looks
             // right with the color picker (makes the input box the color of the HTML color string)
-            addedBlock.setAction(comparisonMoveBlock.ActionString);
-            addedBlock.setComparisonAction(comparisonMoveBlock.ComparisonActionString);
-            addedBlock.setRowOrColumnId(comparisonMoveBlock.RowOrColumnID);
-            addedBlock.position = comparisonMoveBlock.Position;
-            addedBlock.numberTicksBeforeChange = comparisonMoveBlock.NumberTicksBeforeChange;
-            addedBlock.numberBlocksToMove = comparisonMoveBlock.NumberBlocksToMove;
-            addedBlock.direction = comparisonMoveBlock.Direction;
+            addedBlock.setAction(block.ActionString);
+            addedBlock.setComparisonAction(block.ComparisonActionString);
+            addedBlock.setRowOrColumnId(block.RowOrColumnID);
+            addedBlock.position = block.Position;
+            addedBlock.numberTicksBeforeChange = block.NumberTicksBeforeChange;
+            addedBlock.numberBlocksToMove = block.NumberBlocksToMove;
+            addedBlock.direction = block.Direction;
             // Adjust the GUI div to mirror the internal state of the block
-            $(selector).find("select.comparison").val(comparisonMoveBlock.ComparisonActionString);
-            $(selector).find("select.columnrow").val(comparisonMoveBlock.RowOrColumnID);
-            $(selector).find("select.action").val(comparisonMoveBlock.ActionString);
-            $(selector).find("select.move-amount").val(comparisonMoveBlock.NumberBlocksToMove);
-            $(selector).find("select.move-direction").val(comparisonMoveBlock.Direction);
-            $(selector).find("select.tick-amount").val(comparisonMoveBlock.NumberTicksBeforeChange);
+            $(selector).find("select.comparison").val(block.ComparisonActionString);
+            $(selector).find("select.columnrow").val(block.RowOrColumnID);
+            $(selector).find("select.action").val(block.ActionString);
+            $(selector).find("select.move-amount").val(block.NumberBlocksToMove);
+            $(selector).find("select.move-direction").val(block.Direction);
+            $(selector).find("select.tick-amount").val(block.NumberTicksBeforeChange);
         }
         var rangeMoveBlocks = loadedList.rangeMoveBlocks;
         for (var i = 0; i < rangeMoveBlocks.length; i++) {
-            var rangeMoveBlock = rangeMoveBlocks[i];
+            var block = rangeMoveBlocks[i];
             var blockId = addBlock("RangeMove", "range-move-template");
             var addedBlock = blockList.getBlock(blockId);
             var selector = '#' + blockId;
-            $(selector).find("input.setToColor").val(rangeMoveBlock.SetToColor); // must make HTML match before setting action so the GUI looks
+            $(selector).find("input.setToColor").val(block.SetToColor); // must make HTML match before setting action so the GUI looks
             // right with the color picker (makes the input box the color of the HTML color string)
-            addedBlock.setAction(rangeMoveBlock.ActionString);
-            addedBlock.setLeftRowOrColumnId(rangeMoveBlock.LeftRowOrColumnID);
-            addedBlock.setRightRowOrColumnId(rangeMoveBlock.RightRowOrColumnID);
-            addedBlock.position = rangeMoveBlock.Position;
-            addedBlock.numberTicksBeforeChange = rangeMoveBlock.NumberTicksBeforeChange;
-            addedBlock.numberBlocksToMove = rangeMoveBlock.NumberBlocksToMove;
-            addedBlock.direction = rangeMoveBlock.Direction;
+            addedBlock.setAction(block.ActionString);
+            addedBlock.setLeftRowOrColumnId(block.LeftRowOrColumnID);
+            addedBlock.setRightRowOrColumnId(block.RightRowOrColumnID);
+            addedBlock.position = block.Position;
+            addedBlock.numberTicksBeforeChange = block.NumberTicksBeforeChange;
+            addedBlock.numberBlocksToMove = block.NumberBlocksToMove;
+            addedBlock.direction = block.Direction;
             // Adjust the GUI div to mirror the internal state of the block
-            $(selector).find("select.leftColumnRow").val(rangeMoveBlock.LeftRowOrColumnID);
-            $(selector).find("select.rightColumnRow").val(rangeMoveBlock.RightRowOrColumnID);
-            $(selector).find("select.action").val(rangeMoveBlock.ActionString);
-            $(selector).find("select.move-amount").val(rangeMoveBlock.NumberBlocksToMove);
-            $(selector).find("select.move-direction").val(rangeMoveBlock.Direction);
-            $(selector).find("select.tick-amount").val(rangeMoveBlock.NumberTicksBeforeChange);
+            $(selector).find("select.leftColumnRow").val(block.LeftRowOrColumnID);
+            $(selector).find("select.rightColumnRow").val(block.RightRowOrColumnID);
+            $(selector).find("select.action").val(block.ActionString);
+            $(selector).find("select.move-amount").val(block.NumberBlocksToMove);
+            $(selector).find("select.move-direction").val(block.Direction);
+            $(selector).find("select.tick-amount").val(block.NumberTicksBeforeChange);
         }
         var commentBlocks = loadedList.commentBlocks;
         for (var i = 0; i < commentBlocks.length; i++) {
@@ -863,6 +986,7 @@ $(function () {
             var selector = '#' + blockId;
             $(selector).find(".commentTextArea").val(commentBlock.Comment);
         }
+        */
         // now sort the ul via the positions (http://stackoverflow.com/questions/304396/what-is-the-easiest-way-to-order-a-ul-ol-in-jquery)
         var items = $("#block-list li").get();
         items.sort(function (a, b) {
@@ -880,7 +1004,7 @@ $(function () {
             ul.append(li);
         });
         // Now set up the rules that were saved
-        var rules = loadedList.rules;
+       /* var rules = loadedList.rules;
         if (rules.length) {
             rules = rules[0];
             DEFAULT_BOX_COLOR = rules.DefaultBoxColor;
@@ -892,7 +1016,7 @@ $(function () {
         else {
             resetRules();
             clearGrid(); // resets visible default box color for user
-        }
+        } */
     }
 
     function showLightWriterMessage(msg) {

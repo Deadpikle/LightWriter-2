@@ -115,6 +115,7 @@
 
                 <?php 
                     // create column labels
+                    // TODO: clean this up!
                     echo "<div id='colLabelDiv'>";
                     
                     for ($i = 0; $i < 16; $i++) {

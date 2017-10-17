@@ -115,16 +115,15 @@
 
                 <?php 
                     // create column labels
-                    // TODO: finish this -- it works except for the column label stuff 
-                    /*echo "<div id='colLabelDiv'>";
+                    echo "<div id='colLabelDiv'>";
                     
                     for ($i = 0; $i < 16; $i++) {
-                        //$content = (string)(intval("A") + $i); // TODO: fix this to get string from ASCII char code
+                        $letter = chr(65 + $i);
                         $style = "";
                         if ($i == 15) {
                             $style = "style='margin-right:0px'"; // TODO: refactor to CSS
                         }
-                        echo "<label class='colGridLabels' " . $style . ">" . $i . "</label>";
+                        echo "<label class='colGridLabels' " . $style . ">" . $letter . "</label>";
                     }
 
                         echo "<div class='colLabelSpacer'></div>";
@@ -133,15 +132,16 @@
                     // create grid
                     for ($i = 0; $i < 16; $i++) {
                         // overall div for row
-                        echo "<div class='grid-row' id='row" . $i . "'>";
+                        echo "<div class='grid-row' id='row" . ($i + 1) . "'>";
                         // label for row
-                        echo "<label class='rowGridLabels'>" . $i . "</label>";
+                        echo "<label class='rowGridLabels'>" . ($i + 1) . "</label>";
                         // individual grid squares
                         for ($j = 0; $j < 16; $j++) {
-                            echo "<div id='" . $i . ' ' . $j . "' class='color-box2 " . $i . ' ' . $j . "'></div>";
+                            $letter = chr(65 + $j);
+                            echo "<div id='" . $letter . ($i + 1) . "' class='color-box2 " . ($i + 1) . ' ' . $letter . "'></div>";
                         }
                         echo "</div>";
-                    }*/
+                    }
                 ?>
 
                 </div>

@@ -104,7 +104,6 @@ $(function () {
             return true;
         }
     });
-    InitGrid16();   // Calls InitGrid16 to create HTML for light grid.
 });
 
 /*****
@@ -129,58 +128,6 @@ function createArray(length) {
     }
 
     return arr;
-}
-
-/*****
-*	InitGrid()
-*   Generates the HTML for and applies CSS tyles to a labeled 16 x 16 grid of divs in the 
-*   viewing area of the LightWriter interface. This grid can be referenced using the gridDivs 
-*   variable.
-******/
-function InitGrid16() {
-    var gridWidth = 16;
-    var gridHeight = 16;
-    gridDivs = createArray(gridWidth, gridHeight); // Creates array to store references to grid locations.
-    var rowDivTemp;
-    var rowLabelDiv;
-    var colLabelDiv = document.createElement("div");
-    colLabelDiv.id = 'colLabelDiv';
-    // Create column labels
-    for (var i = 0; i < gridWidth; i++) {
-        var idvLabel = document.createElement("label");
-        idvLabel.textContent = String.fromCharCode(65 + i);
-        idvLabel.className = 'colGridLabels';
-        if (i == gridWidth - 1)
-            idvLabel.style.marginRight = '0px';
-        colLabelDiv.appendChild(idvLabel);
-    }
-    var spacer = document.createElement("div");
-    spacer.className = 'colLabelSpacer';
-    colLabelDiv.appendChild(spacer);
-
-    var LightGrid = document.getElementById("ActualGrid");
-    LightGrid.appendChild(colLabelDiv);
-    // Create grid div elements
-    for (var i = 0; i < gridHeight; i++) {
-        var rowNum = i+1;
-        rowDivTemp = document.createElement("div");
-        rowDivTemp.className = "grid-row";
-        rowDivTemp.id = "row" + i;
-        // Add row label
-        rowLabelDiv = document.createElement("label");
-        rowLabelDiv.textContent = rowNum;
-        rowLabelDiv.className = 'rowGridLabels';
-        // Populate row with grid divs and give them id = colLetter + rowNum
-        rowDivTemp.appendChild(rowLabelDiv);
-        LightGrid.appendChild(rowDivTemp);
-        for (var j = 0; j < gridWidth; j++) {
-            var colLetter = String.fromCharCode(65 + j); // Starts at "A"
-            gridDivs[i][j] = document.createElement("div");
-            gridDivs[i][j].id = colLetter + rowNum;
-            gridDivs[i][j].className = "color-box2 " + rowNum + ' ' + colLetter;
-            rowDivTemp.appendChild(gridDivs[i][j]);
-        }
-    }
 }
 
 /*****

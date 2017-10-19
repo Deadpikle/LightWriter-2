@@ -2,7 +2,7 @@
 
 LightWriter 2 is an online web application that can be used to teach very basic programming concepts, 
 such as algorithms, loops, and conditionals. LightWriter 2's goal is to rewrite and refactor 
-(the original LightWriter)[https://github.com/Deadpikle/LightWriter] to
+[the original LightWriter](https://github.com/Deadpikle/LightWriter) to
 improve maintainability, code readability, and other nice things.
 
 The website is also pretty fun to just mess around with. Give it a try!

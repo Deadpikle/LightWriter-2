@@ -488,7 +488,7 @@ $(function () {
             blocks: JSON.stringify(blockList.blockList),
             name: algorithmName,
             rules: JSON.stringify(rulesForAlgorithm),
-            graphID: currentPatternID
+            patternID: currentPatternID
         };
         ajaxService("save.php", serviceParams,
             function (result) {

@@ -13,9 +13,10 @@
     $query = "
         SELECT SavedPatternID, Name, PatternData, SettingsData
         FROM SavedPatterns
-        WHERE UserID = ? AND SavedPatternID = ?";
+        WHERE SavedPatternID = ?";
+        //WHERE UserID = ? AND SavedPatternID = ?";
     $params = [
-        $_SESSION["UserID"],
+        //$_SESSION["UserID"],
         $data["patternID"]
     ];
 
@@ -33,7 +34,7 @@
         $didOutput = TRUE;
     }
     if (!$didOutput) {  
-        $result = array ("status" => 200, "success" => FALSE);
+        $result = array ("status" => 404, "success" => FALSE);
     }
     echo json_encode($result);
 ?>

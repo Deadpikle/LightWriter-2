@@ -27,7 +27,7 @@ var MAX_ROW = 16; // Last number for the bottom most row. Also used to calc tabl
 var DEFAULT_BOX_COLOR = "#444444";
 var MS_PER_TICK = 500; // number of milliseconds per tick
 var COLOR_MIXING = false; // If true, mixes colors instead of overwriting them
-var SITE_URL_BASE_FOR_SHARING = "https://URL_BASE"; // sharing mechanism appends to this url for sharing
+var SITE_URL_BASE_FOR_SHARING = "https://babien.co/lightwriter"; // sharing mechanism appends to this url for sharing
 
 var LOWEST_TICK_SPEED = 50; // lowest possible tick speed for rule setting
 var HIGHEST_TICK_SPEED = 10000; // highest possible tick speed for rule setting

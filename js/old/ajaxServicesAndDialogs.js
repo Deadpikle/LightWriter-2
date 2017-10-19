@@ -646,7 +646,7 @@ $(function () {
                     $(dialogSelector).dialog("close");
                 }
                 else {
-                    showLightWriterMessage("Error loading an algorithm. Error: " + loadedList["Error"]);
+                    showLightWriterMessage("Error loading pattern");
                 }
             }, null);
     }
@@ -664,17 +664,15 @@ $(function () {
     *       algorithmId: the ID of the algorithm to load
     *       successFunc: Function to call upon success of loading
     ******/
-    function loadAlgorithmForSharing(algorithmId, successFunc) {
+    function loadAlgorithmForSharing(patternID, successFunc) {
         var serviceParams = {
-            algorithmID: algorithmId,
-            URL: document.URL
+            patternID: patternID
         };
         var dialog = this;
-        ajaxService("LoadUserAlgorithmForSharing", serviceParams,
+        ajaxService("load-pattern.php", serviceParams,
             function (result) {
-                var loadedList = result.d;
-                if (typeof loadedList["Error"] == "undefined") { // No errors in loading algorithm
-                    loadAlgorithmIntoListAndPage(loadedList);
+                if (result.status == 200) { // No errors in loading algorithm
+                    loadAlgorithmIntoListAndPage(result);
                     successFunc();
                 }
                 else {

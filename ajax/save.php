@@ -34,12 +34,11 @@
         }
         else {
             // updating an old graph
-            $update = "UPDATE SavedPatterns SET UserID = ?, PatternData = ?, SettingsData = ?, Name = ? WHERE SavedPatternID = ?";
+            $update = "UPDATE SavedPatterns SET UserID = ?, PatternData = ?, SettingsData = ? WHERE SavedPatternID = ?";
             $params = [
                 $_SESSION["UserID"],
                 $blocks,
                 $rules,
-                $name,
                 $patternID
             ];
 

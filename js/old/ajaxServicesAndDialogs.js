@@ -236,6 +236,7 @@ $(function () {
         width: 350,
         modal: true,
         buttons: {
+            // TODO: refactor Save & Save as New to have less duplicated code and less...ugliness with setting currentPatternID
             "Save": function () { // User clicks the "Login" button
                 var formIsValid = true;
                 $("#algorithmName").removeClass("ui-state-error"); 
@@ -243,6 +244,21 @@ $(function () {
                 var algorithmName = $("#algorithmName").val();
                 if (algorithmName != '') {
                     // form is valid, go ahead and attempt a save
+                    saveUserAlgorithm(algorithmName, true, null);
+                }
+                else {
+                    $("#algorithmName").addClass("ui-state-error");
+                    updateTips("save-algorithm-dialog", "You must give this algorithm a name");
+                }
+            },
+            "Save as New": function () { // User clicks the "Login" button
+                var formIsValid = true;
+                $("#algorithmName").removeClass("ui-state-error"); 
+                // Do a small bit of validation (aka checking if fields are blank)
+                var algorithmName = $("#algorithmName").val();
+                if (algorithmName != '') {
+                    // form is valid, go ahead and attempt a save
+                    currentPatternID = -1; // so it saves as new
                     saveUserAlgorithm(algorithmName, true, null);
                 }
                 else {

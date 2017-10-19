@@ -18,6 +18,7 @@
 * Consider entirely new GUI that is more mobile friendly
 * Database migrations / setup page
 * Probably need to write the block data to disk instead of db due to max column length (or otherwise compress it -- gzcompress & gzdecode? probably need to change column encoding in db)
+* Save/load locally in browser
 
 ## Blocks
 

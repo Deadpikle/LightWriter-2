@@ -29,6 +29,7 @@
   * Rectangles
   * Squares
   * "Functions"
+* Vary individual block speed?
 
 ## API/Ajax calls
 

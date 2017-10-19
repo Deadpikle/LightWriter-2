@@ -692,7 +692,7 @@ $(function () {
                     successFunc();
                 }
                 else {
-                    showLightWriterMessage("Error loading a shared algorithm. Error: " + loadedList["Error"]);
+                    showLightWriterMessage("Error loading a shared algorithm.");
                 }
             }, null);
     }

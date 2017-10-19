@@ -2,7 +2,26 @@
 	#-name- is the element with ID -name
 	.-name- is the element with CLASS -name
 */
+.footer {
+    position: absolute;
+    bottom: 1em;
+    
+    /* Set the fixed height of the footer here a*/
+    height: 35px;
+    color: white;
+    width: 200px; 
+    margin: auto;
+    margin-left: 12em;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
+    /* Margin bottom by footer height */
+    margin-bottom: 35px;
     background-color: #000000;
     font-size: 14px;
 }

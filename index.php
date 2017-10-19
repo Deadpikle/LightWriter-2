@@ -186,4 +186,8 @@
         
         <?php require_once 'block-views/comment.php'; ?>
 	</div>
+</body>
+    <footer class="footer">
+        <p class="navbar-text">© LightWriter 2017 | <a href="https://github.com/Deadpikle/LightWriter-2" target="_blank"><img src="images/github-circle.png"></img></a></p>
+    </footer>
 </html>
